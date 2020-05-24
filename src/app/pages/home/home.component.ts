@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ClientesService } from 'src/app/shared/services/clientes.service';
 import { Cliente } from 'src/app/shared/models/cliente';
+
 
 @Component({
   selector: 'app-home',
@@ -17,14 +17,22 @@ export class HomeComponent implements OnInit {
     fecha_nac: ""
   }
 
+  clientes: Cliente
+
   constructor(private clienteService: ClientesService) { }
 
   ngOnInit() {
-    this.clienteService.getClientes().subscribe();
+    this.obtenerCliente()
   }
 
-  agregarCliente(){
-    this.clienteService.postCliente(this.cliente).subscribe();
+  obtenerCliente(){    
+    this.clienteService.getClientes().subscribe( r =>  {          
+      this.clientes = r
+    });       
+  }
+  
+  agregarCliente(){    
+    this.clienteService.postCliente(this.cliente).subscribe()
   }
 
 }
