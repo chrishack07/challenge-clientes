@@ -20,19 +20,6 @@ export class HomeComponent implements OnInit {
   constructor(private clienteService: ClientesService) { }
 
   ngOnInit() {
-
-    // this.cliente ={
-    //   nombre: "nancy",
-    //   apellido: "garcia",
-    //   edad: 36,
-    //   fecha_nac: "01/05/1984"
-    // }
-    // this.clienteService.postCliente(this.cliente).subscribe(res =>{
-    //   console.log('INFORMACION ', res)
-    // });
-    // this.clienteService.getClientes().subscribe(res =>{
-    //   console.log('entro componente ',res)
-    // });
     this.clienteService.getClientes().subscribe();
   }
 
