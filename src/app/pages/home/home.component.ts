@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit {
     this.obtenerCliente()
   }
 
-  obtenerCliente(){    
+  obtenerCliente(){
+    this.clientes = []
     this.clienteService.getClientes().subscribe( r =>  {          
       for(let i in r) {
         this.clientes.push(r[i])
@@ -40,7 +41,13 @@ export class HomeComponent implements OnInit {
   }
   
   agregarCliente(){    
-    this.clienteService.postCliente(this.cliente).subscribe()
+    this.clienteService.postCliente(this.cliente).subscribe(()=>{
+      setTimeout(() => {
+        this.obtenerCliente()  
+      }, 1000);
+      
+    })
+    
   }
   
   promedioEdades(){
