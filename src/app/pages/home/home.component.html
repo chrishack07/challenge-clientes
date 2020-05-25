@@ -58,7 +58,7 @@
               <td>{{ persona.apellido }}</td>
               <td>{{ persona.edad }}</td>
               <td>{{ persona.fecha_nac }} </td>
-              <td> Ver detalle </td>
+              <td style="color: green; cursor:pointer" data-target="#myModal" data-toggle="modal"  (click)="buscarPersona(indice)">  Ver detalle  </td>
             </tr>
           </tbody>
         </table>
@@ -81,6 +81,36 @@
       Desviación de Estándar : {{ desviacionEstandar }}
     </div>
     <button type="button" class="btn btn-success" style=" left: 50%;" (click)="desviacionEstandardEdades(promedio)">Calcular Desviación Estándar</button>    
+  </div>
+
+
+  <!-- ////////////// M O D A L /////////////////// -->
+  <div class="modal fade" id="myModal" #content >
+    <div class="modal-dialog" role="document">        
+      <div class="modal-content">
+        <div class="modal-header" style="align-items: center; justify-content: center;" *ngIf="clienteSeleccionado">
+          <div class="card mb-4 shadow-sm" >
+            <!-- <div class="card-header">
+              <h4 class="my-0 font-weight-normal">{{bebidaSeleccionada.strDrink }}</h4>
+            </div> -->
+            <div class="card-body" >
+              <h1 class="card-title pricing-card-title"> <small class="text-muted"> Detalles</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Nombre  : <span class="text-primary">{{clienteSeleccionado.nombre}}</span></li>
+                <li>Apellido: <span class="text-primary"> {{ clienteSeleccionado.apellido }} </span></li>
+                <li>Edad: <span class="text-primary">{{ clienteSeleccionado.edad }} </span></li>
+                <li>Profesion: <span class="text-primary">{{ clienteSeleccionado.profesion }} </span></li>
+                <li>Fecha Nacimiento: <span class="text-primary">{{ clienteSeleccionado.fecha_nac }} </span></li>
+                <li>Fecha Muerte: <span class="text-primary">{{ clienteSeleccionado.fecha_muerte }} </span></li>
+              </ul>
+            </div>
+          </div>            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
   <br>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Cliente } from 'src/app/shared/models/cliente';
 import { ClienteService } from 'src/app/shared/servicios/cliente.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -14,15 +15,16 @@ export class HomeComponent implements OnInit {
     nombre: "",
     apellido: "",
     edad: 0,
-    fecha_nac: ""
+    profesion: "",
+    fecha_nac: "",  
+    fecha_muerte: ""
   }
 
-  // clientes: Cliente
   clientes: Cliente[] = []
   promedio: number
   desviacionEstandar: number
-  fecha_muerte: '02/03/10'
-  
+  clienteSeleccionado: Cliente
+
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
@@ -30,12 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   obtenerCliente(){    
-    console.log('CLIENTES INICIAR ',this.clientes)
     this.clienteService.getClientes().subscribe( r =>  {          
-      for(var i in r) {
+      for(let i in r) {
         this.clientes.push(r[i])
       }
-      console.log('CLIENTES  ', this.clientes )
     });             
   }
   
@@ -62,7 +62,15 @@ export class HomeComponent implements OnInit {
         diferenciasPromedioAlCuadrado =  diferenciasPromedioAlCuadrado + Math.pow(diferencia,2)
       }
       this.desviacionEstandar = Math.sqrt(diferenciasPromedioAlCuadrado)
-      console.log('Desviacion estandar ', this.desviacionEstandar)    
+    }
+  }
+
+  buscarPersona(posicion){
+    let personas = this.clientes
+    for(let i in personas){
+      if(i == posicion){
+        this.clienteSeleccionado = personas[i]
+      }
     }
   }
 }
