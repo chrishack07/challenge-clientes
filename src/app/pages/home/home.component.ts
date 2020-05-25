@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { ClientesService } from 'src/app/shared/services/clientes.service';
 import { Cliente } from 'src/app/shared/models/cliente';
+import { ClienteService } from 'src/app/shared/servicios/cliente.service';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   varianza: number
   fecha_muerte: '02/03/10'
   
-  constructor(private clienteService: ClientesService) { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
     this.obtenerCliente()

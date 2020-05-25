@@ -4,10 +4,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ClientesService } from './shared/services/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 import { AnalisisClienteComponent } from './pages/analisis-cliente/analisis-cliente.component';
+import { ClienteService } from './shared/servicios/cliente.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { AnalisisClienteComponent } from './pages/analisis-cliente/analisis-clie
     HttpClientModule,
     FormsModule
   ],
-  providers: [ClientesService],
+  providers: [ClienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
