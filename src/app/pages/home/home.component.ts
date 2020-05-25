@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Cliente } from 'src/app/shared/models/cliente';
 import { ClienteService } from 'src/app/shared/servicios/cliente.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -40,12 +41,12 @@ export class HomeComponent implements OnInit {
     });             
   }
   
-  agregarCliente(){    
+  agregarCliente(form: NgForm){    
     this.clienteService.postCliente(this.cliente).subscribe(()=>{
       setTimeout(() => {
         this.obtenerCliente()  
       }, 1000);
-      
+      form.resetForm();
     })
     
   }

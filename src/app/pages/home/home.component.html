@@ -6,7 +6,7 @@
   <div class="row">   
     <div class="col-md-12">
       <h4 class="mb-3">Creacion de Cliente</h4>
-      <form class="needs-validation" novalidate (ngSubmit)="agregarCliente()" #formulario="ngForm">
+      <form class="needs-validation" novalidate (ngSubmit)="agregarCliente(formulario)" #formulario="ngForm">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">Nombre</label>
@@ -90,9 +90,6 @@
       <div class="modal-content">
         <div class="modal-header" style="align-items: center; justify-content: center;" *ngIf="clienteSeleccionado">
           <div class="card mb-4 shadow-sm" >
-            <!-- <div class="card-header">
-              <h4 class="my-0 font-weight-normal">{{bebidaSeleccionada.strDrink }}</h4>
-            </div> -->
             <div class="card-body" >
               <h1 class="card-title pricing-card-title"> <small class="text-muted"> Detalles</small></h1>
               <ul class="list-unstyled mt-3 mb-4">
