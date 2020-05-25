@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { ClientesService } from './shared/services/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
+import { AnalisisClienteComponent } from './pages/analisis-cliente/analisis-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    AnalisisClienteComponent
   ],
   imports: [
     BrowserModule,
