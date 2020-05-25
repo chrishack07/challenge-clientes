@@ -35,7 +35,6 @@ export class ClienteService {
       for(var i in r) {
         this.cliente.push(r[i])
       }
-      console.log('CLIENTON ', this.cliente)
       return this.cliente      
     }))
     .pipe(catchError(err => {
