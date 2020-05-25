@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
   clientes: Cliente
   promedio: number
   varianza: number
-
+  fecha_muerte: '02/03/10'
+  
   constructor(private clienteService: ClientesService) { }
 
   ngOnInit() {

@@ -48,17 +48,17 @@
               <th>Apellido</th>
               <th>Edad</th>
               <th>Fecha Nacimiento</th>
-              <th>Fecha Muerte</th>
+              <th> Detalle</th>
             </tr>
           </thead>
-          <tbody *ngFor="let persona of clientes">
+          <tbody *ngFor="let persona of clientes; let indice=index">
             <tr>
-              <td>{{ persona[i] }}</td>
+              <td>{{ indice+1 }}</td>
               <td>{{ persona.nombre }}</td>
               <td>{{ persona.apellido }}</td>
               <td>{{ persona.edad }}</td>
               <td>{{ persona.fecha_nac }} </td>
-              <td>{{ persona.fecha_nac * fecha_muerte }} </td>
+              <td> Ver detalle </td>
             </tr>
           </tbody>
         </table>
