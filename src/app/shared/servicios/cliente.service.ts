@@ -17,8 +17,7 @@ export class ClienteService {
   postCliente(data: Cliente): Observable<Cliente>{
     let body = JSON.stringify(data)
     let headers = new HttpHeaders({
-      'Content-Type':'application/json'
-      
+      'Content-Type':'application/json'      
     })
 
     console.log('Entro el servicio  : ', body);
@@ -30,6 +29,7 @@ export class ClienteService {
   }
 
   getClientes():Observable<Cliente>{
+    this.cliente = []
     return this.http.get<Cliente>(this.urlEndPoint)
     .pipe<Cliente>(map(r =>{
       for(var i in r) {

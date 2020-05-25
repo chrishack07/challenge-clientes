@@ -17,9 +17,10 @@ export class HomeComponent implements OnInit {
     fecha_nac: ""
   }
 
-  clientes: Cliente
+  // clientes: Cliente
+  clientes: Cliente[] = []
   promedio: number
-  varianza: number
+  desviacionEstandar: number
   fecha_muerte: '02/03/10'
   
   constructor(private clienteService: ClienteService) { }
@@ -29,9 +30,13 @@ export class HomeComponent implements OnInit {
   }
 
   obtenerCliente(){    
+    console.log('CLIENTES INICIAR ',this.clientes)
     this.clienteService.getClientes().subscribe( r =>  {          
-      this.clientes = r
-    });       
+      for(var i in r) {
+        this.clientes.push(r[i])
+      }
+      console.log('CLIENTES  ', this.clientes )
+    });             
   }
   
   agregarCliente(){    
@@ -56,8 +61,8 @@ export class HomeComponent implements OnInit {
         diferencia = personas[i].edad - promedio
         diferenciasPromedioAlCuadrado =  diferenciasPromedioAlCuadrado + Math.pow(diferencia,2)
       }
-      this.varianza = Math.sqrt(diferenciasPromedioAlCuadrado)
-      console.log('Desviacion estandar ', this.varianza)    
+      this.desviacionEstandar = Math.sqrt(diferenciasPromedioAlCuadrado)
+      console.log('Desviacion estandar ', this.desviacionEstandar)    
     }
   }
 }
