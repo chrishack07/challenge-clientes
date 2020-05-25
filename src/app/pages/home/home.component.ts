@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   }
 
   clientes: Cliente
+  promedio: number
+  varianza: number
 
   constructor(private clienteService: ClientesService) { }
 
@@ -34,5 +36,27 @@ export class HomeComponent implements OnInit {
   agregarCliente(){    
     this.clienteService.postCliente(this.cliente).subscribe()
   }
+  
+  promedioEdades(){
+    let personas = this.clientes
+    let sumatoria = 0    
+    for(let i in personas){
+      sumatoria = (sumatoria + personas[i].edad)
+    }
+    this.promedio = sumatoria/Object.keys(personas).length
+  }
 
+  desviacionEstandardEdades(promedio: number){
+    let personas = this.clientes
+    let diferencia = 0
+    let diferenciasPromedioAlCuadrado = 0
+    if(promedio>0){
+      for(let i in personas){
+        diferencia = personas[i].edad - promedio
+        diferenciasPromedioAlCuadrado =  diferenciasPromedioAlCuadrado + Math.pow(diferencia,2)
+      }
+      this.varianza = Math.sqrt(diferenciasPromedioAlCuadrado)
+      console.log('Desviacion estandar ', this.varianza)    
+    }
+  }
 }

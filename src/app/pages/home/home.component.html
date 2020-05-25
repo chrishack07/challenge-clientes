@@ -20,7 +20,7 @@
 
         <div class="mb-3">
             <label for="cc-name">Age</label>
-            <input type="text" class="form-control" id="cc-name" [(ngModel)]="cliente.edad" name="edad" placeholder="22" required>          
+            <input type="number" class="form-control" id="cc-name" [(ngModel)]="cliente.edad" name="edad" placeholder="22" required>          
         </div>
 
         <div class="mb-3">
@@ -34,8 +34,9 @@
     </div>      
   </div>
 
+
   <!-- ////////// T A B L A /////////////-->
-  <div class="row" style="margin-top: 5rem">
+  <div class="row" style="margin-top: 3rem">
     <div class="col">
       <h2>Tabla</h2>
       <div class="table-responsive">
@@ -47,20 +48,39 @@
               <th>Apellido</th>
               <th>Edad</th>
               <th>Fecha Nacimiento</th>
+              <th>Fecha Muerte</th>
             </tr>
           </thead>
           <tbody *ngFor="let persona of clientes">
             <tr>
-              <td>1</td>
+              <td>{{ persona[i] }}</td>
               <td>{{ persona.nombre }}</td>
               <td>{{ persona.apellido }}</td>
               <td>{{ persona.edad }}</td>
-              <td>{{ persona.fecha_nac }}</td>
+              <td>{{ persona.fecha_nac }} </td>
+              <td>{{ persona.fecha_nac * fecha_muerte }} </td>
             </tr>
-
           </tbody>
         </table>
       </div>
     </div>  
   </div>
+
+  
+  <!-- ////////// P R O M E D I O  /////////////-->
+  <div style="margin-top: 2rem">    
+    <div class="alert alert-primary" role="alert">
+      Promedio de edad : {{ promedio }}
+    </div>
+    <button type="button" class="btn btn-success" style=" left: 50%;" (click)="promedioEdades()">Calcular Promedio</button>    
+  </div>
+  
+  <!-- ////////// V A R I A N Z A  /////////////-->
+  <div style="margin-top: 2rem">    
+    <div class="alert alert-primary" role="alert">
+      Desviacion de Estandard : {{ varianza }}
+    </div>
+    <button type="button" class="btn btn-success" style=" left: 50%;" (click)="desviacionEstandardEdades(promedio)">Calcular Varianza</button>    
+  </div>
+  <br>
 </div>
